@@ -1,12 +1,15 @@
 {
-  "name": "webpacksetup",
+  "name": "Portfolio",
   "version": "1.0.0",
-  "description": "An intial setup for React workflow",
+  "description": "Vaneet's Website",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
-    "build:prod": "webpack --config webpack.config.prod.js"
+    "build:prod": "webpack --config webpack.config.prod.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write ."
   },
   "author": "Vaneet",
   "license": "MIT",
@@ -20,9 +23,14 @@
     "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "postcss-loader": "^7.0.1",
+    "prettier": "^2.7.1",
     "style-loader": "^3.3.1",
     "url-loader": "^4.1.1",
     "webpack": "^5.73.0",
@@ -30,6 +38,10 @@
     "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/material": "^5.9.1",
+    "framer-motion": "^6.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0"
