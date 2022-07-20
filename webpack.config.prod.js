@@ -8,7 +8,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: ''
   },
   devtool: false,
   module: {
@@ -25,7 +24,6 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              /// helps with css modules
               importLoaders: 1,
               modules: {
                 localIdentName: '[name]__[local]__[hash:base64:5]'
@@ -40,12 +38,12 @@ module.exports = {
                 plugins: () => [autoprefixer()]
               }
             }
-          } // automatically prefixes css code
+          } 
         ],
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpe?g|gif)$/, //// testing for image files
+        test: /\.(png|jpe?g|gif)$/,
         use: [
           {
             loader: 'url-loader',
@@ -60,7 +58,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: __dirname + '/src/index.html',
+      template: __dirname + '/src/template.html',
       filename: 'index.html',
       inject: 'body'
     })

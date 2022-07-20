@@ -3,14 +3,14 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development', // doew some optimizations but doesn't shrink our code
-  entry: './src/index.js',
+  mode: 'development',
+  entry: path.join(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: ''
+    clean: true
   },
-  devtool: 'eval-cheap-module-source-map', // controls how source maps are generated
+  devtool: 'eval-cheap-module-source-map',
   module: {
     rules: [
       {
@@ -25,7 +25,6 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              /// helps with css modules
               importLoaders: 1,
               modules: {
                 localIdentName: '[name]__[local]__[hash:base64:5]'
@@ -40,12 +39,12 @@ module.exports = {
                 plugins: () => [autoprefixer()]
               }
             }
-          } // automatically prefixes css code
+          }
         ],
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpe?g|gif)$/, //// testing for image files
+        test: /\.(png|jpe?g|gif)$/,
         use: [
           {
             loader: 'url-loader',
@@ -58,9 +57,19 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'dist')
+    },
+    open: true,
+    port: 3000,
+    hot: true,
+    compress: true,
+    historyApiFallback: true
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      template: __dirname + '/src/index.html',
+      template: path.join(__dirname, 'src', 'template.html'),
       filename: 'index.html',
       inject: 'body'
     })
